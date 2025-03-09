@@ -18,7 +18,7 @@
 
     <h2>Personal Information</h2>
     <ul>
-        <li>Name: YU HSIANG TSENG</li>
+        <li>Name: Zeng Yuxiang</li>
         <li>Gender: Male</li>
         <li>Age: 18 years old</li>
         <li>Phone number:<a href="tel:+886966769955"> 0966-769-955</a></li>
@@ -33,7 +33,19 @@
     <h2>Hobbies</h2>
     <p>I love jogging. Through jogging, I have built endurance and willpower, and also developed self-discipline and perseverance. I believe these traits will help me stay organized and continue making progress in both work and studies.
     </p>
-    <button onclick="alert('Thank you for your visit！')">Click me</button>
+    <button onclick="handleClick()">Click me</button>
+<p id="counter">Button clicked: 0 times</p>
+
+<script>
+  let count = 0;
+
+  function handleClick() {
+    count++;
+    alert('Thank you for your visit！');
+    document.getElementById('counter').innerText = `Button clicked: ${count} times`;
+  }
+</script>
+
 
     <hr>
 
