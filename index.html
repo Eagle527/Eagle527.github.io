@@ -54,6 +54,18 @@
     localStorage.setItem('clickCount', count);
   }
 </script>
+<button onclick="openMap()">Navigate to Zhubei City</button>
+
+<script>
+  function openMap() {
+    // 導航的目的地（經緯度）
+    let destination = "24.826713,121.012807";
+    
+    // 使用 Google 地圖導航
+    window.open(`https://www.google.com/maps/dir/?api=1&destination=${destination}`, '_blank');
+  }
+</script>
+
 
 
 
