@@ -23,7 +23,19 @@
         <li>Age: 18 years old</li>
         <li>Phone number:<a href="tel:+886966769955"> 0966-769-955</a></li>
         <li>Email:<a href="mailto:eaglecomtw386@gmail.com"> eaglecomtw386@gmail.com</a></li>
-        <li>Address: Zhubei City, Hsinchu County</li>
+        <li>Address: No. 6, Lane 57, Fulu 2nd Street, Xinpu Township, Hsinchu County, Taiwan.</li>
+        <button onclick="openMap()">Navigate to No. 6, Lane 57, Fulu 2nd Street, Xinpu Township, Hsinchu County, Taiwan</button>
+
+<script>
+  function openMap() {
+    // 導航的目的地（經緯度）
+    let destination = "24.833608,121.030121";
+    
+    // 使用 Google 地圖導航
+    window.open(`https://www.google.com/maps/dir/?api=1&destination=${destination}`, '_blank');
+  }
+</script>
+    <hr>
     </ul>
 
     <p>
@@ -54,19 +66,6 @@
     localStorage.setItem('clickCount', count);
   }
 </script>
-<button onclick="openMap()">Navigate to Zhubei City</button>
-
-<script>
-  function openMap() {
-    // 導航的目的地（經緯度）
-    let destination = "24.826713,121.012807";
-    
-    // 使用 Google 地圖導航
-    window.open(`https://www.google.com/maps/dir/?api=1&destination=${destination}`, '_blank');
-  }
-</script>
-
-
 
 
     <hr>
