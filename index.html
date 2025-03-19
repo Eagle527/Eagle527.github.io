@@ -13,6 +13,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Delius&family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <style>
+    body {
+    font-family: "Delius", cursive;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #f2f2f2;
+    text-align: center; /* 讓文字內容置中 */
+}
+
+h1, h2, p {
+    text-align: center; /* 標題和段落置中 */
+}
+
+ul {
+    display: inline-block;
+    text-align: left; /* 防止 ul 內文也置中，保持正常排版 */
+}
+
+img {
+    display: block;
+    margin: 0 auto; /* 讓圖片置中 */
+}
+
+iframe {
+    display: block;
+    margin: 0 auto; /* 讓 iframe (地圖與影片) 置中 */
+}
+
+button {
+    display: block;
+    margin: 10px auto; /* 讓按鈕置中 */
+}
+
+div {
+    display: flex;
+    justify-content: center; /* 讓 div 內的圖片等元素置中 */
+    flex-wrap: wrap; /* 避免圖片過多時溢出 */
+}
+
+</style>
+<style>
 body {
   font-family: "Delius", cursive;
   font-weight: 400;
@@ -96,6 +136,12 @@ body {
     localStorage.setItem('clickCount', count);
   }
 </script>
+    <form>
+        <label>帳號:<input type="Text" name="account" maxlength="6"></label><br>
+        <label>密碼:<input type="Password" name="Password" maxlength="6"></label><br>
+        <input type="submit" value="傳送">
+
+    </form>
 
 
     <hr>
