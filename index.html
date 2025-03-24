@@ -1,40 +1,73 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-Tw">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>屬性選擇器範例</title>
-    <link rel="stylesheet" type="text/css" href="attrcss (1).css">
+    <title>個人資料填寫 + 問卷調查</title>
 </head>
 <body>
-    <h2>範例1：元素[HTML屬性]</h2> <!--a[href]-->
-        <a href="#">有href屬性的連結</a><br>
-        <a>沒有href屬性的連結</a><br>
-    <h2>範例2：元素[HTML屬性="值"]</h2> <!--a[target="_top"]-->
-        <a href="#" target="_top">target屬性值為_top的連結</a><br>
-    <h2>範例3：元素[HTML屬性^="文字"]</h2> <!--p[class^="green"]-->
-        <p class="greenText">太棒了，我符合條件，所以變成綠色了。</p>
-        <p class="green-text">喔耶！我也符合條件，所以也變成綠色了。</p>
-        <p class="text greenText">喔NO，我不符合條件，所以沒有變成綠色。</p>
-        <p class="green">哈哈哈，我也符合條件耶，所以也變成綠色了。</p>
-    <h2>範例4：元素[HTML屬性$="文字"]</h2> <!--p[class$="acidblue"]-->
-        <p class="textacidblue">讚啦！我符合條件，所以變成湖水藍了。</p>
-        <p class="text textacidblue">加1，我也符合條件，所以變成湖水藍了。</p>
-        <p class="textacidblue text">不想面對，我不符合條件，所以沒變成湖水藍。</p>
-        <p class="acidblue">太美妙啦~我符合條件，所以變成湖水藍了。</p><br>
-    <h2>範例5：元素[HTML屬性*="文字"]</h2> <!--*[class*="me"]-->
-        <p class="me-text text">class名稱包含me的元素標籤</p>
-        <p class="text me-text">class名稱包含me的元素標籤</p>
-        <span class="span-block">class名稱不包含me的元素標籤</span><br>
-    <h2>範例6：元素[HTML屬性~="文字"</h2> <!--img[alt~="Love"]-->
-        <img src="https://picsum.photos/150/100" alt="I Very Love You"> <!--會套用樣式設定-->
-        <img src="https://picsum.photos/150/100" alt="I Love You"> <!--會套用樣式設定-->
-        <img src="https://picsum.photos/150/100" alt="ILVOEYOU">
-    <h2>範例7：元素[HTML屬性|="文字"]</h2> <!--p[class|="green"]-->
-        <p class="green">超棒的，我符合條件，所以變成綠色。</p>
-        <p class="green-">YA!!我也符合條件，所以變成綠色。</p>
-        <p class="green-text">意不意外？我也符合條件，所以變成綠色。</p>
-        <p class="Textgreen">哭哭，我不符合條件，所以不是綠色。</p><br>
+
+    <h2>個人資料填寫 + 問卷調查</h2>
+    
+    <form action="#" method="post">
+        <!-- 基本資料 -->
+        <fieldset>
+            <legend>基本資料</legend>
+
+            <label for="name">姓名：</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label>性別：</label>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">男</label>
+            <input type="radio" id="female" name="gender" value="female" required>
+            <label for="female">女</label><br><br>
+
+            <label for="dob">生日日期：</label>
+            <input type="date" id="dob" name="dob" required><br><br>
+
+            <label for="email">電子郵件：</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="tel">聯絡電話：</label>
+            <input type="tel" id="tel" name="tel" pattern="[0-9]{10}" placeholder="輸入 10 位數字"><br><br>
+        </fieldset>
+
+        <!-- 興趣與習慣 -->
+        <fieldset>
+            <legend>興趣與習慣</legend>
+
+            <label>喜歡的運動：</label><br>
+            <input type="checkbox" id="basketball" name="sports" value="basketball">
+            <label for="basketball">籃球</label>
+            <input type="checkbox" id="soccer" name="sports" value="soccer">
+            <label for="soccer">足球</label>
+            <input type="checkbox" id="swimming" name="sports" value="swimming">
+            <label for="swimming">游泳</label><br><br>
+
+            <label for="exercise">每週運動頻率 (0~7 天)：</label>
+            <input type="range" id="exercise" name="exercise" min="0" max="7"><br><br>
+
+            <label for="phoneTime">平均每日使用手機時間 (小時)：</label>
+            <input type="number" id="phoneTime" name="phoneTime" min="0" max="24"><br><br>
+
+            <label for="socialPlatform">偏好的社群平台：</label>
+            <select id="socialPlatform" name="socialPlatform">
+                <option value="facebook">Facebook</option>
+                <option value="instagram">Instagram</option>
+                <option value="twitter">Twitter</option>
+                <option value="tiktok">TikTok</option>
+                <option value="others">其他</option>
+            </select><br><br>
+
+            <label for="suggestions">其他建議：</label><br>
+            <textarea id="suggestions" name="suggestions" rows="4" cols="50"></textarea><br><br>
+        </fieldset>
+
+        <!-- 提交與重設按鈕 -->
+        <input type="submit" value="提交">
+        <input type="reset" value="重設">
+    </form>
+
 </body>
 </html>
