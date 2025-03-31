@@ -1,73 +1,108 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>個人資料填寫 + 問卷調查</title>
+    <title>我的自傳</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+<style>
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    content: "✨ ";
+    color: gold;
+
+    content: " ✨";
+    color: gold;
+    font-variant: small-caps;
+    color: darkblue;
+
+    color: orange;
+    font-weight: bold;
+    color: gray;
+    color: red;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 2em;
+    font-weight: bold;
+    color: darkblue;
+    background-color: yellow;
+    color: black;
+    width: 50%;
+    margin-top: 10px;
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: left;
+    background-color: #f0f0f0;
+    background-color: lightblue;
+    font-size: 16px;
+    border: 2px solid red;
+    background-color: gray;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    background-color: green;
+</style>
 <body>
 
-    <h2>個人資料填寫 + 問卷調查</h2>
-    
-    <form action="http://210.240.159.51/answer.php" method="post">
-        <!-- 基本資料 -->
-        <fieldset>
-            <legend>基本資料</legend>
+    <!-- 頁內導航 -->
+    <nav>
+        <ul>
+            <li><a href="#about">關於我</a></li>
+            <li><a href="#hobbies">我的興趣</a></li>
+            <li><a href="#skills">我的技能</a></li>
+            <li><a href="#contact">聯絡方式</a></li>
+        </ul>
+    </nav>
 
-            <label for="name">姓名：</label>
-            <input type="text" id="name" name="name" required><br><br>
+    <h1 id="top">我的自傳</h1>
 
-            <label>性別：</label>
-            <input type="radio" id="male" name="gender" value="male" required>
-            <label for="male">男</label>
-            <input type="radio" id="female" name="gender" value="female" required>
-            <label for="female">女</label><br><br>
+    <h2 id="about">關於我</h2>
+    <p data-highlight="true">你好，我叫○○，是一名熱愛科技的學生。</p>
+    <p>我對前端開發充滿熱情，並且喜歡探索新的技術。</p>
 
-            <label for="dob">生日日期：</label>
-            <input type="date" id="dob" name="dob" required><br><br>
+    <h2 id="hobbies">我的興趣</h2>
+    <ul>
+        <li>寫程式</li>
+        <li>閱讀技術書籍</li>
+        <li>旅行與攝影</li>
+    </ul>
 
-            <label for="email">電子郵件：</label>
-            <input type="email" id="email" name="email" required><br><br>
+    <h2 id="skills">我的技能</h2>
+    <table border="1">
+        <tr>
+            <th>技能</th>
+            <th>熟練度</th>
+        </tr>
+        <tr>
+            <td>HTML & CSS</td>
+            <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+            <td>JavaScript</td>
+            <td>⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+            <td>Python</td>
+            <td>⭐⭐⭐</td>
+        </tr>
+    </table>
 
-            <label for="tel">聯絡電話：</label>
-            <input type="tel" id="tel" name="tel" pattern="[0-9]{10}" placeholder="輸入 10 位數字"><br><br>
-        </fieldset>
+    <h2 id="contact">聯絡方式</h2>
+    <form>
+        <label for="name">姓名：</label>
+        <input type="text" id="name" name="name" required><br><br>
 
-        <!-- 興趣與習慣 -->
-        <fieldset>
-            <legend>興趣與習慣</legend>
+        <label for="email">電子郵件：</label>
+        <input type="email" id="email" name="email"><br><br>
 
-            <label>喜歡的運動：</label><br>
-            <input type="checkbox" id="basketball" name="sports" value="basketball">
-            <label for="basketball">籃球</label>
-            <input type="checkbox" id="soccer" name="sports" value="soccer">
-            <label for="soccer">足球</label>
-            <input type="checkbox" id="swimming" name="sports" value="swimming">
-            <label for="swimming">游泳</label><br><br>
-
-            <label for="exercise">每週運動頻率 (0~7 天)：</label>
-            <input type="range" id="exercise" name="exercise" min="0" max="7"><br><br>
-
-            <label for="phoneTime">平均每日使用手機時間 (小時)：</label>
-            <input type="number" id="phoneTime" name="phoneTime" min="0" max="24"><br><br>
-
-            <label for="socialPlatform">偏好的社群平台：</label>
-            <select id="socialPlatform" name="socialPlatform">
-                <option value="facebook">Facebook</option>
-                <option value="instagram">Instagram</option>
-                <option value="twitter">Twitter</option>
-                <option value="tiktok">TikTok</option>
-                <option value="others">其他</option>
-            </select><br><br>
-
-            <label for="suggestions">其他建議：</label><br>
-            <textarea id="suggestions" name="suggestions" rows="4" cols="50"></textarea><br><br>
-        </fieldset>
-
-        <!-- 提交與重設按鈕 -->
-        <input type="submit" value="提交">
-        <input type="reset" value="重設">
+        <button type="submit">送出</button>
     </form>
+
+    <!-- 回到頂部 -->
+    <p><a href="#top">回到頂部</a></p>
 
 </body>
 </html>
