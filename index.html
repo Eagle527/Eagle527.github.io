@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>W型路徑乒乓球</title>
+  <title>W路徑乒乓球</title>
   <style>
     body {
       position: fixed;
@@ -13,53 +12,41 @@
       margin: 0;
       display: flex;
       align-items: center;
-      justify-content: center; /* 確保元素水平垂直居中 */
     }
 
     .pingpong {
-      width: 120px;  /* 設定圓形元素的寬度 */
-      height: 120px; /* 設定圓形元素的高度 */
-      background-image: url('ex06-10/images/photo1.jpg'); /* 更新圖片路徑 */
-      background-size: cover; /* 使圖片覆蓋整個元素，不會變形 */
-      border-radius: 50%; /* 使元素變成圓形 */
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35); /* 設定陰影效果 */
-      animation: moveW 6s infinite ease-in-out, scaleBall 3s infinite alternate;
+      width: 120px;
+      height: 120px;
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdjPy_5TxSfEeaA_eQV62xRJoggN3qAwxgeQ&s'); /* 網路圖片路徑 */
+      background-size: cover;
+      border-radius: 50%;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+      animation: bounceW 5s infinite alternate ease-in-out;
     }
 
-    /* 定義 W 型來回移動的動畫 */
-    @keyframes moveW {
+    @keyframes bounceW {
       0% {
-        transform: translate(0, 0); /* 初始位置 */
+        transform: translate(0px, 0px) scale(1) rotate(0deg);
       }
-      25% {
-        transform: translate(200px, -100px); /* 向右上移動 */
+      20% {
+        transform: translate(200px, -100px) scale(0.6) rotate(90deg);
       }
-      50% {
-        transform: translate(0, -200px); /* 向上移動 */
+      40% {
+        transform: translate(400px, 0px) scale(1.4) rotate(180deg);
       }
-      75% {
-        transform: translate(-200px, -100px); /* 向左上移動 */
+      60% {
+        transform: translate(600px, -100px) scale(0.6) rotate(270deg);
+      }
+      80% {
+        transform: translate(800px, 0px) scale(1.4) rotate(360deg);
       }
       100% {
-        transform: translate(0, 0); /* 回到原點 */
-      }
-    }
-
-    /* 定義縮放效果的動畫 */
-    @keyframes scaleBall {
-      0% {
-        transform: scale(1); /* 初始大小 */
-      }
-      50% {
-        transform: scale(1.2); /* 變大 1.2 倍 */
-      }
-      100% {
-        transform: scale(1); /* 恢復到原來大小 */
+        transform: translate(1000px, -100px) scale(0.6) rotate(450deg);
       }
     }
   </style>
 </head>
 <body>
-  <div class="pingpong"></div> <!-- 顯示圓形圖片，會執行動畫 -->
+  <div class="pingpong"></div>
 </body>
 </html>
