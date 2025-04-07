@@ -23,7 +23,7 @@
       background-size: cover; /* 使圖片覆蓋整個元素，不會變形 */
       border-radius: 50%; /* 使元素變成圓形 */
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35); /* 設定陰影效果 */
-      animation: moveW 5s infinite ease-in-out alternate, scaleBall 3s infinite alternate;
+      animation: moveW 6s infinite ease-in-out, scaleBall 3s infinite alternate;
     }
 
     /* 定義 W 型來回移動的動畫 */
@@ -35,7 +35,7 @@
         transform: translate(200px, -100px); /* 向右上移動 */
       }
       50% {
-        transform: translate(0, 0); /* 回到原點 */
+        transform: translate(0, -200px); /* 向上移動 */
       }
       75% {
         transform: translate(-200px, -100px); /* 向左上移動 */
