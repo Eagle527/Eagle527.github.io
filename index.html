@@ -65,9 +65,78 @@
     font-size: 14px;
     box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
   }
+
+ .sidebar {
+    width: 200px;
+    background-color: #f6ffe4;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    transition: width 0.3s ease;
+  }
+
+  .sidebar.collapsed {
+    width: 60px;
+    padding: 20px 5px;
+    overflow-x: hidden;
+  }
+
+  .sidebar.collapsed h2,
+  .sidebar.collapsed ul li a {
+    display: none;
+  }
+
+  .toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 200px; /* 預設展開狀態下的位置 */
+    background-color: #c2a477;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: left 0.3s ease;
+  }
+
+  .content {
+    margin-left: 240px;
+    padding: 20px;
+    flex: 1;
+    transition: margin-left 0.3s ease;
+  }
+
+  .sidebar.collapsed ~ .content {
+    margin-left: 80px;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 220px;
+    width: calc(100% - 220px);
+    background: #ddd;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    transition: left 0.3s ease, width 0.3s ease;
+  }
+
+  .sidebar.collapsed ~ .footer {
+    left: 60px;
+    width: calc(100% - 60px);
+  }
+
+
 </style>
 </head>
 <body>
+  
+  <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
 
   <div class="sidebar">
     <h2>List</h2>
@@ -257,6 +326,23 @@
     <p><a href="https://www.khsh.hcc.edu.tw/home" target="_blank">National Kuan-Hsi Senior High School</a></p>
     <p><a href="https://www.nttu.edu.tw" target="_blank">National Taitung University</a></p>
     <p><a href="https://git.nttu.edu.tw" target="_blank">National Taitung University - Department of Green Energy and Information Technology</a></p>
+    
+    <script>
+  function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const toggleBtn = document.querySelector('.toggle-btn');
+    sidebar.classList.toggle('collapsed');
+
+    // 根據 sidebar 狀態調整按鈕位置
+    if (sidebar.classList.contains('collapsed')) {
+      toggleBtn.style.left = '20px';
+    } else {
+      toggleBtn.style.left = '200px';
+    }
+  }
+</script>
+
+
 
 </body>
 </html>
