@@ -17,7 +17,7 @@
 
   /* 左邊選單欄 */
   .sidebar {
-    width: 200px;
+    width: 220px;
     background-color: #f6ffe4;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     padding: 20px;
@@ -25,6 +25,11 @@
     height: 100dvh;
     overflow-y: auto;
   }
+
+  .sidebar {
+  height: calc(var(--vh, 1vh) * 100);
+  }
+
 
   .sidebar h2 {
     font-size: 18px;
@@ -113,17 +118,17 @@
   }
 
   .footer {
-    position: fixed;
-    bottom: 0;
-    left: 220px;
-    width: calc(100% - 220px);
-    background: #ddd;
-    padding: 10px;
-    text-align: center;
-    font-size: 14px;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-    transition: left 0.3s ease, width 0.3s ease;
-  }
+  position: fixed;
+  bottom: 0;
+  left: 220px;
+  width: calc(100% - 220px);
+  background: #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  transition: left 0.3s ease, width 0.3s ease;
+}
 
   .sidebar.collapsed ~ .footer {
     left: 60px;
@@ -336,7 +341,16 @@
     <p><a href="https://www.khsh.hcc.edu.tw/home" target="_blank">National Kuan-Hsi Senior High School</a></p>
     <p><a href="https://www.nttu.edu.tw" target="_blank">National Taitung University</a></p>
     <p><a href="https://git.nttu.edu.tw" target="_blank">National Taitung University - Department of Green Energy and Information Technology</a></p>
-    
+    <script>
+  function setFullHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
+  window.addEventListener('resize', setFullHeight);
+  window.addEventListener('load', setFullHeight);
+  </script>
+
     <script>
   function toggleSidebar() {
     const sidebar = document.querySelector('.sidebar');
