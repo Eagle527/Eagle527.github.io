@@ -22,7 +22,7 @@
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     padding: 20px;
     position: fixed;
-    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     overflow-y: auto;
   }
 
@@ -132,6 +132,16 @@
 
 
 </style>
+<script>
+  function setFullHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+
+  window.addEventListener('resize', setFullHeight);
+  window.addEventListener('load', setFullHeight);
+</script>
+
 </head>
 <body>
   
