@@ -118,13 +118,26 @@
   font-size: 14px;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
   transition: left 0.3s ease, width 0.3s ease;
-}
+  }
 
   .sidebar.collapsed ~ .footer {
     left: 60px;
     width: calc(100% - 60px);
   }
 
+  .toggle-btn {
+    position: fixed;  /* 固定在畫面左上角 */
+    top: 10px;
+    left: 10px;
+    z-index: 1000;    /* 保證在 sidebar 之上 */
+    background-color: #c0a16b;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
 
 </style>
 <script>
