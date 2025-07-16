@@ -1,264 +1,249 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Yu-Hsiang Tseng's Personal Profile - My Final Project</title>
-<style>
-  body {
-    font-family: "Delius", cursive;
-    font-weight: 400;
-    font-style: normal;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    min-height: 100vh;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yu-Hsiang Tseng's Personal Website</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #0a0a0a;
+      scroll-behavior: smooth;
+      position: relative;
+      z-index: 1;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #FFFFFFee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      z-index: 1001;
+      border-bottom: 1px solid #ccc;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .menu-toggle {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .header-title {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      flex: 1;
+      color: #0366d6;
+    }
+
+    .social-link {
+      color: #333;
+      text-decoration: none;
+      font-size: 36px;
+    }
+
+    .sidebar {
+      position: fixed;
+      left: -250px;
+      top: 0;
+      height: 100%;
+      width: 250px;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding-top: 120px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+
+    .sidebar a {
+      display: block;
+      color: #111;
+      padding: 15px;
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar a:hover {
+      background-color: #fff4b8;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    section {
+      padding: 120px 20px 40px;
+      max-width: 1000px;
+      margin: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gallery img {
+      max-width: 200px;
+      margin: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #0A1A2F;
+      color: #FFFFFF;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      border-top: 1px solid #ccc;
+      z-index: 1;
+    }
+
+    #topBtn {
+      position: fixed;
+      bottom: 50px;
+      right: 20px;
+      background-color: #0a84ff;
+      border: none;
+      padding: 12px 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 22px;
+      color: white;
+      box-shadow: 0 0 12px rgba(0, 132, 255, 0.5);
+      z-index: 1002;
+    }
+    #personal-info ul {
+      list-style-type: none; /* 去除圓點 */
+     padding-left: 0;       /* 去除預設左邊距 */
+     margin-left: 0;        /* 去除預設左邊距 */
+    }
+
+    #personal-info li {
+      margin-bottom: 8px;    /* 每行之間留一點距離，排版更美觀 */
+    }
+
+    #Achievement-Timeline ul {
+    list-style-type: none; /* 移除原本的圓點 */
+    padding-left: 0; /* 避免因移除圓點造成的左邊空白 */
+    margin-left: 0;  /* 一併把左邊預設的 margin 清除 */
+    }
 
 
-  .sidebar {
-  height: calc(var(--vh, 1vh) * 100);
-  }
-
-
-  .sidebar h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .sidebar ul li {
-    margin: 10px 0;
-  }
-
-  .sidebar ul li a {
-    text-decoration: none;
-    color: #333;
-  }
-
-  /* 主內容區 */
-  .content {
-    margin-left: 240px; /* 給 sidebar 留空間 */
-    padding: 20px;
-    flex: 1;
-  }
-
-  /* 底部固定日期時間欄 */
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 220px; /* 跟 sidebar 寬度一致 */
-    width: calc(100% - 220px);
-    background: #ddd;
-    padding: 10px;
-    text-align: center;
-    font-size: 14px;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-  }
-
- .sidebar {
-    width: 200px;
-    background-color: #f6ffe4;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    padding: 20px;
-    position: fixed;
-    height: 10000px;
-    overflow-y: auto;
-    transition: width 0.3s ease;
-  }
-
-  .sidebar.collapsed {
-    width: 60px;
-    padding: 20px 5px;
-    overflow-x: hidden;
-  }
-
-  .sidebar.collapsed h2,
-  .sidebar.collapsed ul li a {
-    display: none;
-  }
-
-  .toggle-btn {
-    position: fixed;
-    top: 20px;
-    left: 200px; /* 預設展開狀態下的位置 */
-    background-color: #c2a477;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    z-index: 1000;
-    transition: left 0.3s ease;
-  }
-
-  .content {
-    margin-left: 240px;
-    padding: 20px;
-    flex: 1;
-    transition: margin-left 0.3s ease;
-  }
-
-  .sidebar.collapsed ~ .content {
-    margin-left: 80px;
-  }
-
-  .footer {
-  position: fixed;
-  bottom: 0;
-  left: 220px;
-  width: calc(100% - 220px);
-  background: #ddd;
-  padding: 10px;
-  text-align: center;
-  font-size: 14px;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-  transition: left 0.3s ease, width 0.3s ease;
-  }
-
-  .sidebar.collapsed ~ .footer {
-    left: 60px;
-    width: calc(100% - 60px);
-  }
-
-  .toggle-btn {
-    position: fixed;  /* 固定在畫面左上角 */
-    top: 10px;
-    left: 10px;
-    z-index: 1000;    /* 保證在 sidebar 之上 */
-    background-color: #c0a16b;
-    border: none;
-    color: white;
-    padding: 10px 10px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 5px;
-}
-
-</style>
-<script>
-  function setFullHeight() {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }
-
-  window.addEventListener('resize', setFullHeight);
-  window.addEventListener('load', setFullHeight);
-</script>
-
+  </style>
 </head>
 <body>
-  
-  <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-
-
-  <div class="sidebar collapsed">
-    <h2>List</h2>
-    <ul>
-      <li><a href="#personal-information">個人資訊</a></li>
-      <li><a href="#hobbies">興趣</a></li>
-      <li><a href="#Achievement-Timeline">成就時間軸</a></li>
-      <li><a href="#photo-gallery">照片集</a></li>
-      <li><a href="#video">我的影片</a></li>
-      <li><a href="#related-links">相關連結</a></li>
-    </ul>
-  </div>
-
-  <div class="content">
-
-    <h1 id="personal-information">曾榆翔 個人檔案</h1>
-    <a href="https://www.bing.com/ck/a?!&&p=89c665e7c8aed6fa8cbd3ae290538f031aa39a881e164dc2d2527ebf3af26c38JmltdHM9MTc0MDk2MDAwMA&ptn=3&ver=2&hsh=4&fclid=3bbf238a-33f8-6e88-2910-3041326c6f75&psq=%e7%ab%b9%e5%8c%97&u=a1aHR0cHM6Ly96aC53aWtpcGVkaWEub3JnL3dpa2kvJUU3JUFCJUI5JUU1JThDJTk3JUU1JUI4JTgy&ntb=1">
-    <img src="https://th.bing.com/th/id/OIP.QDcY9vRsFPs0_ZNHtsbG7AAAAA?rs=1&pid=ImgDetMain" alt="Click here to visit the website" width="300" height="200">
+  <div id="particles-js"></div>
+  <header>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <div class="header-title">
+  <img src="25C2F2AE-E1E3-4A31-8D89-EC03D28DF91C.jpeg" alt="Personal Website"style="height:80px;">
+</div>
+    <a class="social-link" href="https://www.instagram.com/yuxiang551/" target="_blank">
+      <i class="fab fa-instagram"></i>
     </a>
+  </header>
 
-    <hr>
+  <nav class="sidebar" id="sidebar">
+    <a href="https://bunnyann.tw/bunnyann106/">Explore Hsinchu</a>
+    <a href="https://www.welcometw.com/%E6%96%B0%E7%AB%B9%E9%A4%90%E5%BB%B3%E7%BE%8E%E9%A3%9F-%E6%96%B0%E7%AB%B9%E7%8D%A8%E5%AE%B6%E7%BE%8E%E9%A3%9F%E5%BF%85%E5%90%83%E9%A4%90%E5%BB%B3%E6%B8%85%E5%96%AE/">Hsinchu Eats</a>
+    <a href="https://www.booking.com/region/tw/hsinchu.zh-tw.html?aid=2276785&pagename=hsinchu&label=msn-2hDuUrFj_vQsGB6zrvVkwg-79920914256761:tikwd-79921102910109:loc-40:neo:mte:lp40:dec:qs%E6%96%B0%E7%AB%B9%E7%B8%A3%E9%A3%AF%E5%BA%97&utm_campaign=Region%20-%20Taiwan&utm_medium=cpc&utm_source=bing&utm_term=2hDuUrFj_vQsGB6zrvVkwg&msclkid=db33c8573a7517d252b1a01253b30011">Hsinchu Hotels</a>
+    <a href="https://www.cwa.gov.tw/V8/C/W/County/County.html?CID=10018">Weather</a>
+    <a href="https://www.google.com/maps/@24.8440999,121.0220416,12z?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D">map</a>
+    <a href="https://eagle527.github.io/">中文版</a>
+  </nav>
 
-    <h3>個人資訊</h3>
+  <section id="personal-info">
+    <h2>個人資訊</h2>
     <ul>
-        <li>姓名: 曾榆翔</li>
-        <li>性別: 男</li>
-        <li>年齡: 20 </li>
-        <li>電話號碼:<a href="tel:+8869XX7X99XX"> 09XX-7X9-9XX</a></li>
-        <li>郵件:<a href="mailto:eagle.second1122@gmail.com"> eagle.second1122@gmail.com</a></li>
-        <li>地址: 新竹縣新埔鎮</li>
-        <li>學歷: 新竹縣立成功國中、國立關西高中、國立臺東大學</li>
+      <li><strong>姓名:</strong> 曾榆翔</li>
+      <li><strong>性別:</strong> 男</li>
+      <li><strong>年齡:</strong> 20</li>
+      <li><strong>電話號碼:</strong> <a href="tel:+8869XX7X99XX">+8869XX7X99XX</a></li>
+      <li><strong>郵件:</strong> <a href="mailto:eagle.second1122@gmail.com">eagle.second1122@gmail.com</a></li>
+      <li><strong>地址:</strong>  新竹縣新埔鎮</li>
+      <li><strong>學歷:</strong> 新竹縣立成功國中、國立關西高中、國立臺東大學</li>
+      <li><strong>工作經驗:</strong> 億客來生鮮超市 工讀生 /王品集團原燒 工讀生</li>
+      <li><strong>關於我:</strong> 我來自新竹縣竹北市，這裡是台灣科技產業的重要樞紐。目前就讀於國立台東大學綠能與資訊科技學系，未來希望能在半導體產業或機械相關領域工作。在求學過程中，我擔任過班級幹部，學習如何與他人溝通以及時間管理。透過參與課外活動，我提升了團隊合作能力，也學會與不同背景的人互動。我做事負責、樂於助人，無論在日常生活或工作中，總是努力完成交付的任務。我相信成長來自挑戰，因此對新的學習機會持開放態度，並持續努力提升專業技能<li>
     </ul>
+  </section>
 
-    <p>
-        我來自新竹縣竹北市，這裡是台灣科技產業的重要樞紐。目前就讀於國立台東大學綠能與資訊科技學系，未來希望能在半導體產業或機械相關領域工作。在求學過程中，我擔任過班級幹部，學習如何與他人溝通以及時間管理。透過參與課外活動，我提升了團隊合作能力，也學會與不同背景的人互動。我做事負責、樂於助人，無論在日常生活或工作中，總是努力完成交付的任務。我相信成長來自挑戰，因此對新的學習機會持開放態度，並持續努力提升專業技能。
-    </p>
+  <hr>
 
-    <hr>
-
-    <h3 id="hobbies">興趣</h3>
-    <p>我的興趣包括慢跑、登山，以及挑戰獨特或極限運動，例如潛水和跳傘。我喜歡透過身體活動來突破身心的極限，並在過程中獲得成就感與個人成長。其中，慢跑是我最喜歡的運動。雖然看似簡單，但慢跑是真正考驗耐力與意志力的運動。透過規律訓練，我不僅提升了體能，也培養了自律與毅力，這些特質大大幫助我在學業和生活中保持有條理，穩步朝目標前進。登山則是我的另一項熱情。雖然過程可能非常辛苦，但當我登上山頂、欣賞美景時，那種成就感難以言喻。這份源自努力與決心的回報感，激勵我持續挑戰自我、克服障礙。此外，我下一個想嘗試的運動是自行車騎行。我對長途騎乘感到好奇，期待能在騎行中發現新風景，同時進一步鍛鍊耐力與耐心。總體來說，我的興趣不僅侷限於運動本身，更反映出我持續探索與學習的心態。我喜歡踏入陌生領域，享受從零開始學習的過程。我也樂於面對挑戰，並不斷突破自我極限。這樣的心態讓我在學習和生活中變得更加適應力強和堅韌，能夠自信地應對變化與逆境。
-    </p>
-
-    <hr>
-
-    <h3 id="Achievement-Timeline">成就時間軸</h3>
-    <ul>
-    <li>
-        <div class="date">2017年06月01日</div>
-      新竹縣竹北市十興國小畢業
-    </li>
-    <li>
-        <div class="date">2020年06月01日</div>
-      新竹縣立成功國中畢業
-    </li>
-    <li>
-        <div class="date">2022年04月19日</div>
-      APX全國高中數理能力檢定中級前標合格證書
-    </li>
-    <li>
-        <div class="date">2023年03月28日</div>
-      王品集團原燒工讀生
-    </li>
-    <li>
-        <div class="date">2023年06月01日</div>
-      國立關西高中畢業
-    </li>
-    <li>
-        <div class="date">2023年06月15日</div>
-      億客來生鮮超市工讀生
-    </li>
-    <li>
-        <div class="date">2024年12月13日</div>
-      LAVA大鵬灣鐵人賽志工
-    </li>
-    <li>
-        <div class="date">2025年03月14日</div>
-      國立台東大學綠資系第二名獎狀
-    </li>
-    <li>
-        <div class="date">2025年05月27日</div>
-      CCEA(CmorePaaS)證照
-    </li>
-    </ul>
-
-    
-    <hr>
-
-    <h3 id="photo-gallery">照片集</h3>
-    <p>Here are some of my pictures:</p>
+  <section id="hobbies">
+    <h2>興趣</h2>
+    <p>我的興趣包括慢跑、登山，以及挑戰獨特或極限運動，例如潛水和跳傘。我喜歡透過身體活動來突破身心的極限，並在過程中獲得成就感與個人成長。其中，慢跑是我最喜歡的運動。雖然看似簡單，但慢跑是真正考驗耐力與意志力的運動。透過規律訓練，我不僅提升了體能，也培養了自律與毅力，這些特質大大幫助我在學業和生活中保持有條理，穩步朝目標前進。登山則是我的另一項熱情。雖然過程可能非常辛苦，但當我登上山頂、欣賞美景時，那種成就感難以言喻。這份源自努力與決心的回報感，激勵我持續挑戰自我、克服障礙。此外，我下一個想嘗試的運動是自行車騎行。我對長途騎乘感到好奇，期待能在騎行中發現新風景，同時進一步鍛鍊耐力與耐心。總體來說，我的興趣不僅侷限於運動本身，更反映出我持續探索與學習的心態。我喜歡踏入陌生領域，享受從零開始學習的過程。我也樂於面對挑戰，並不斷突破自我極限。這樣的心態讓我在學習和生活中變得更加適應力強和堅韌，能夠自信地應對變化與逆境。</p>
+  </section>
+  
+  <hr>
+  
+  <section id="Achievement-Timeline">
+    <h2>成就時間軸</h2>
+   <ul>
+  <li><div class="date"><strong>2017年06月01日</strong></div>新竹縣竹北市十興國小畢業</li>
+  <li><div class="date"><strong>2020年06月01日</strong></div>新竹縣立成功國中畢業</li>
+  <li><div class="date"><strong>2022年04月19日</strong></div>APX全國高中數理能力檢定中級前標合格證書</li>
+  <li><div class="date"><strong>>2023年03月28日</strong></div>王品集團原燒工讀生</li>
+  <li><div class="date"><strong>2023年06月01日</strong></div>國立關西高中畢業</li>
+  <li><div class="date"><strong>2023年06月15日</strong></div>億客來生鮮超市工讀生</li>
+  <li><div class="date"><strong>2024年12月13日</strong></div>LAVA大鵬灣鐵人賽志工</li>
+  <li><div class="date"><strong>2025年03月14日</strong></div>國立台東大學綠資系第二名獎狀</li>
+  <li><div class="date"><strong>2025年05月27日</strong></div>CCEA(CmorePaaS)證照</li>
+   </ul>
+  </section>
+  
+  <hr>
+  
+  <section id="gallery">
+    <h2>照片集</h2>
+    <div class="gallery">
 
     <style>
       .photo-gallery {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 30px;
-        justify-content: center;
+       display: flex;
+       flex-wrap: wrap;
+       gap: 30px;
+       justify-content: center;
+       margin-top: 50px; /* 加上這一行即可改善 */
       }
+
 
       .polaroid {
         background: white;
         padding: 10px 10px 25px 10px;
-        width: 300px;
-        height: 260px;
+        width: 260px;
+        height: 300px;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         border-radius: 8px;
         text-align: center;
@@ -381,39 +366,73 @@
     </div>
   </section>
 
+  <hr>
 
-    <hr>
+  <section id="video">
+  <h2>我的影片</h2>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+    <iframe 
+      src="https://www.youtube.com/embed/efeT4x3E7Zo?si=N0n9F9_6AJB6WLNf"
+      title="YouTube video player"
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
 
-    <h3 id="video">我的影片</h3>
-    <p>This is my video</p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/efeT4x3E7Zo?si=N0n9F9_6AJB6WLNf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<hr style="height:2px;background-color:blue">
 
-    <hr style="height:2px;background-color:blue">
-
-    <h3 id="related-links">相關連結</h3>
+  <section id="links">
+    <h2>相關連結</h2>
     <p><a href="https://cgjh.hcc.edu.tw/" target="_blank">新竹縣立成功國中</a></p>
     <p><a href="https://www.khsh.hcc.edu.tw/home" target="_blank">國立關西高中</a></p>
     <p><a href="https://www.nttu.edu.tw" target="_blank">國立台東大學</a></p>
-    <p><a href="https://git.nttu.edu.tw" target="_blank">綠資系</a></p>
-    <p><a href="https://tseng527.github.io/TSENG.github.io/">英文版網站</a></p>
-    
+    <p><a href="https://git.nttu.edu.tw" target="_blank">綠能與資訊科技學系</a></p>
+    <p><a href="https://tseng527.github.io/TSENG.github.io/">English version of the website</a></p>
+  </section>
 
-    <script>
-  function toggleSidebar() {
-    const sidebar = document.querySelector('.sidebar');
-    const toggleBtn = document.querySelector('.toggle-btn');
-    sidebar.classList.toggle('collapsed');
+  <footer>
+    <div>目前時間: <span id="currentTime"></span></div>
+  </footer>
 
-    // 根據 sidebar 狀態調整按鈕位置
-    if (sidebar.classList.contains('collapsed')) {
-      toggleBtn.style.left = '20px';
-    } else {
-      toggleBtn.style.left = '200px';
+  <button id="topBtn" onclick="scrollToTop()">
+    <i class="fas fa-plane-departure"></i>
+  </button>
+
+  <script>
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('active');
     }
-  }
-</script>
 
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
+    function updateTime() {
+      const now = new Date();
+      document.getElementById('currentTime').textContent = now.toLocaleString();
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
 
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 50, density: { enable: true, value_area: 800 } },
+        color: { value: "#0366d6" },
+        shape: { type: "circle" },
+        opacity: { value: 0.25, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#0366d6", opacity: 0.2, width: 1 },
+        move: { enable: true, speed: 1.5, out_mode: "bounce" }
+      },
+      interactivity: {
+        events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
+        modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
+    });
+  </script>
 </body>
 </html>
